@@ -1,7 +1,6 @@
-import json
-
 from quart import Quart, jsonify, request
 import time
+
 from Bank_check.card_validation import card
 
 import logging
