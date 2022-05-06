@@ -7,7 +7,7 @@ services:
   test:
     build: Test/
     command: python -m pytest -vv test_app.py
+    network_mode: host
 
-
-depends_on:
-  - app
+    depends_on:
+      - app
