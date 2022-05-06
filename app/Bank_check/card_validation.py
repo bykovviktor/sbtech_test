@@ -55,9 +55,9 @@ class Card:
                 "message": {"card data": bankData},
                 "code": 200}
         else:
-            print (f"bin code {binCode} not found in database")
+            #print (f"bin code {binCode} not found in database")
             response = {
-                "message": f"bin code {binCode} not found in database",
+                "message": {"card data": "Unknown card"},
                 "code": 500
             }
 
@@ -65,14 +65,14 @@ class Card:
 
 
     def read_csv(self):
-        #try:
-        with open(binlistFile, encoding="utf8") as f:
-            reader = csv.DictReader(f, delimiter=',')
-            for row in reader:
-                try:
-                    self.banksDatabase.append(row)
-                except Exception as error:
-                    break
+        try:
+            with open(binlistFile, encoding="utf8") as f:
+                reader = csv.DictReader(f, delimiter=',')
+                for row in reader:
+                    try:
+                        self.banksDatabase.append(row)
+                    except Exception as error:
+                        break
 
-        #except Exception as error:
-        #    print(f"error during load binListFile: {error}")
+        except Exception as error:
+            print(f"error during load binListFile: {error}")

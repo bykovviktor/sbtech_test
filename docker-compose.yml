@@ -1,0 +1,13 @@
+services:
+  app:
+    build: app/
+    command: python app.py
+    ports: 8080:8080
+
+  test:
+    build: Test/
+    command: python -m pytest -vv test_app.py
+
+
+depends_on:
+  - app
