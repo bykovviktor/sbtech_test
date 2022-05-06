@@ -7,7 +7,7 @@ docker-compose up -d app
 
 ### Note: App runs on port 8080 by default. If you want to change it - please edit `docker-compose.yml`
 
-## If you want to run API tests, please use `docker-compose up`:
+> If you want to run API tests, please use command:
 
 ```
 docker-compose up test

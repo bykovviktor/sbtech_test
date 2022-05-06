@@ -1,3 +1,5 @@
+# Hi there
+
 ## Install:
 
 ```
@@ -10,7 +12,7 @@ docker run -p `<your_local_port>`:8080 sbertech
 
 ## Usage
 
-send `GET` request to `127.0.0.1:443/card/<card number>`
+send `GET` request to `http://127.0.0.1:8080/card/<card number>`
 
 example for correct card number: 30080657890123456
 
