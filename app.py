@@ -1,7 +1,7 @@
 from quart import Quart, jsonify, request
 import time
 
-from Bank_check.card_validation import card
+from Bank_check.card_validation import Card
 
 import logging
 import os
@@ -13,8 +13,10 @@ class BankCheckRunner:
         self.app = None
         self.port = port
         self.host = host
+        self.card = Card()
 
         self.init_quart()
+
 
     def init_quart(self):
         self.app = Quart(self.__class__.__name__)
@@ -25,11 +27,8 @@ class BankCheckRunner:
             return '<b>' + check_time + '</b>' + ' : Hello. This is ' + self.__class__.__name__
 
         @self.app.route('/card/<cardNum>', methods=['GET'])
-        async def check_cardnum1(cardNum):
-            print (f"card number = {cardNum}")
-            validation = card(cardNum).get_bank_data()
-            print ("validation----------------")
-            print (validation)
+        async def check_cardnum(cardNum):
+            validation = self.card.get_bank_data(cardNum)
             return validation
 
 
@@ -39,5 +38,5 @@ class BankCheckRunner:
 
 
 if __name__ == '__main__':
-    app = BankCheckRunner(host='0.0.0.0', port=443)
+    app = BankCheckRunner(host='0.0.0.0', port=8080)
     app.run()
