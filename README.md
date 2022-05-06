@@ -12,25 +12,25 @@ docker run -p <your_local_port>:8080 sbertech
 
 send `GET` request to `127.0.0.1:443/card/<card number>`
 
-**app checks*
--card number length ( <16 and >20 )
--card number consits digits only
+example for correct card number: 30080657890123456
+
+**app checks:**
+ - card number length ( <16 and >20 )
+ - card number consits digits only
 
 **Rresponse:**
-
--http code
-
--message body
+ - http code
+ - message body
 
 http codes:
 ``` 
  500:
-  internal server error
-  if card number length is incorrect
-  if card number has letters or some special symbols.
-  bin number was not found in database
+  - internal server error
+  - if card number length is incorrect
+  - if card number has letters or some special symbols.
+  - bin number was not found in database
  200:
-  card number is correct and bin number is in database
+  - card number is correct and bin number is in database
 ```
 
 message body:
