@@ -16,15 +16,17 @@ Usage
 
 send `GET` request to `127.0.0.1:443/card/<card number>`
 
-app checks:
+**app checks*
 -card number length ( <16 and >20 )
 -card number consits digits only
 
-you will get a response:
- http code
- message body
+**Rresponse:**
 
-http code:
+-http code
+
+-message body
+
+http codes:
 ``` 
  500:
   internal server error
@@ -42,6 +44,9 @@ message body:
 ```
 
 for some additional info please contact:
+ 
  Viktor
+ 
  tg: @vbykov
- mail: bykov.v@gmail.com
+
+mail: bykov.v@gmail.com
