@@ -14,7 +14,7 @@ docker run -p <your_local_port>:8080 sbertech
 
 Usage
 
-send GET request to 127.0.0.1:443/card/<card number>
+send `GET` request to `127.0.0.1:443/card/<card number>`
 
 app checks:
 -card number length ( <16 and >20 )
