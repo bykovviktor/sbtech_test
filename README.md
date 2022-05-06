@@ -1,18 +1,18 @@
-**Hi**
+#**Hi**
 
-It's web application to check card number
+##It's web application to check card number
 
-Install:
+##Install:
 
 ```
 docker build -t sbertech .
 ```
-Run:
+##Run:
 ```
 docker run -p <your_local_port>:8080 sbertech 
 ```
 
-Usage
+##Usage
 
 send `GET` request to `127.0.0.1:443/card/<card number>`
 
@@ -43,7 +43,7 @@ message body:
   bank details for valid card (json)
 ```
 
-for some additional info please contact:
+##Contacts:
  
  Viktor
  
