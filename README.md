@@ -1,7 +1,3 @@
-# **Hi**
-
-## It's web application to check card number
-
 ## Install:
 
 ```
