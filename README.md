@@ -1,37 +1,36 @@
-**Hi**
-It's web application to check card number
-
-Install:
+## Install:
 
 ```
 docker build -t sbertech .
 ```
-Run:
+## Run:
 ```
 docker run -p <your_local_port>:8080 sbertech 
 ```
 
-Usage
+## Usage
 
-send GET request to 127.0.0.1:443/card/<card number>
+send `GET` request to `127.0.0.1:443/card/<card number>`
 
-app checks:
--card number length ( <16 and >20 )
--card number consits digits only
+example for correct card number: 30080657890123456
 
-you will get a response:
- http code
- message body
+**app checks:**
+ - card number length ( <16 and >20 )
+ - card number consits digits only
 
-http code:
+**Rresponse:**
+ - http code
+ - message body
+
+http codes:
 ``` 
  500:
-  internal server error
-  if card number length is incorrect
-  if card number has letters or some special symbols.
-  bin number was not found in database
+  - internal server error
+  - if card number length is incorrect
+  - if card number has letters or some special symbols.
+  - bin number was not found in database
  200:
-  card number is correct and bin number is in database
+  - card number is correct and bin number is in database
 ```
 
 message body:
@@ -40,7 +39,10 @@ message body:
   bank details for valid card (json)
 ```
 
-for some additional info please contact:
+## Contacts:
+ 
  Viktor
+ 
  tg: @vbykov
- mail: bykov.v@gmail.com
+
+mail: bykov.v@gmail.com
