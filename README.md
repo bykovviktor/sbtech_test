@@ -1,11 +1,22 @@
-## Install:
+## Install and run:
 
 ```
-docker build -t sbertech .
+docker-compose build
+docker-compose up -d app 
 ```
-## Run:
+
+### Note: App runs on port 8080 by default. If you want to change it - please edit `docker-compose.yml`
+
+## If you want to run API tests, please use `docker-compose up`:
+
 ```
-docker run -p `<your_local_port>`:8080 sbertech 
+docker-compose up test
+```
+
+## If you want to use only app docker image, please go to app dir and run
+
+```
+docker build .
 ```
 
 ## Usage
@@ -14,11 +25,11 @@ send `GET` request to `127.0.0.1:443/card/<card number>`
 
 example for correct card number: 30080657890123456
 
-**app checks:**
+**app validates:**
  - card number length ( <16 and >20 )
  - card number consits digits only
 
-**Rresponse:**
+**Response:**
  - http code
  - message body
 
