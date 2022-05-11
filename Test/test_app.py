@@ -14,7 +14,6 @@ class TestApp(unittest.TestCase):
         """Test app is running"""
 
         request = requests.get(f'http://{self.ipApp}:{self.portApp}', timeout=1)
-        print ("Request = ", request.text)
         self.assertIn(" Hello. This is BankCheckRunner", request.text)
 
 
@@ -24,7 +23,6 @@ class TestApp(unittest.TestCase):
 
         cardNumber = "123456789012345"
         request = requests.get(f'http://{self.ipApp}:{self.portApp}/card/{cardNumber}', timeout=1)
-        print ("Request = ", request.text)
         self.assertEqual(request.status_code, 500)
         self.assertIn("Card number length is incorrect. Please check", request.text)
 
@@ -35,7 +33,6 @@ class TestApp(unittest.TestCase):
 
         cardNumber = "123456789012345678901"
         request = requests.get(f'http://{self.ipApp}:{self.portApp}/card/{cardNumber}', timeout = 1 )
-        print ("Request = ", request.text)
         self.assertEqual(request.status_code, 500)
         self.assertIn("Card number length is incorrect. Please check", request.text)
 
@@ -46,7 +43,6 @@ class TestApp(unittest.TestCase):
 
         cardNumber = "111a"
         request = requests.get(f'http://{self.ipApp}:{self.portApp}/card/{cardNumber}', timeout = 1)
-        print ("Request = ", request.text)
         self.assertEqual(request.status_code, 500)
         self.assertIn("Card number must contain digits only", request.text)
 
@@ -67,7 +63,6 @@ class TestApp(unittest.TestCase):
 
         cardNumber = "18006878901234567890"
         request = requests.get(f'http://{self.ipApp}:{self.portApp}/card/{cardNumber}', timeout = 1 )
-        print ("Request = ", request.text)
         self.assertEqual(request.status_code, 200)
         self.assertIsNot(request.json().get("card data"), None)
 

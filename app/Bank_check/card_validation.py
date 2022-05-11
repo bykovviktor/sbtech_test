@@ -23,7 +23,6 @@ class Card:
                 cardValidation = False
                 message = f"Card number length is incorrect. Please check it. Card number must be 16-20 digits. Your card number has {len(str(cardNum))} digits"
                 code = 500
-                print (message)
         else:
             cardValidation = False
             message = f"Card number must contain digits only"
