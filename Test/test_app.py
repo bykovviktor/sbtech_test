@@ -1,9 +1,6 @@
 import unittest
 import requests
 
-import argparse
-
-
 class TestApp(unittest.TestCase):
     def __init__(self, *args, **kwargs):
         super(TestApp, self).__init__(*args, **kwargs)

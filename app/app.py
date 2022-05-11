@@ -1,13 +1,7 @@
 from quart import Quart, jsonify, request
 import time
 
-from  Config.variables import *
 from Bank_check.card_validation import Card
-
-import logging
-import os
-
-
 
 class BankCheckRunner:
     def __init__(self, host, port):

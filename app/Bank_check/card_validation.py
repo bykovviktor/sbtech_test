@@ -14,8 +14,6 @@ class Card:
         card number must contain only digits
         """
 
-        print (cardNum, cardNum.isdigit(), len(cardNum))
-
         cardValidation = True
         message = "Validation OK"
         code = 200
@@ -42,7 +40,8 @@ class Card:
         """
         checkResult = self.check_card_data(cardNum)
         binCode = cardNum[0:6]
-        if not checkResult["result"]:
+
+        if not checkResult["result"]: #if validation is not successfull, return error message and code 500
             return checkResult["message"], checkResult["code"]
 
         bankData = list()
@@ -65,6 +64,9 @@ class Card:
 
 
     def read_csv(self):
+
+        """Open bank datafile and return it as a dict"""
+
         bankDb = list()
 
         try:

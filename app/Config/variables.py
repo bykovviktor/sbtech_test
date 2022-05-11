@@ -1,1 +1,0 @@
-binListFile = r'./Data/binlist-data.csv'
