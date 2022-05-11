@@ -14,7 +14,7 @@ class TestCard(unittest.TestCase):
 
         request = self.card.check_card_data('123')
         self.assertEqual(request["code"], 500)  # add assertion here
-        self.assertEqual(request["message"], "Card number length is incorrect. Please check")
+        self.assertEqual(request["message"], "Card number length is incorrect. Please check it. Card number must be 16-20 digits. Your card number has 3 digits")
 
     def test_check_card_data_max_length(self):
 
@@ -22,7 +22,7 @@ class TestCard(unittest.TestCase):
 
         request = self.card.check_card_data("123456789012345678901")
         self.assertEqual(request["code"], 500)
-        self.assertEqual(request["message"], "Card number length is incorrect. Please check")
+        self.assertEqual(request["message"], "Card number length is incorrect. Please check it. Card number must be 16-20 digits. Your card number has 21 digits")
 
     def test_check_card_data_digits_only(self):
 

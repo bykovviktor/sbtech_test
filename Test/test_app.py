@@ -4,14 +4,15 @@ import requests
 class TestApp(unittest.TestCase):
     def __init__(self, *args, **kwargs):
         super(TestApp, self).__init__(*args, **kwargs)
-        self.port = 8080
-        self.ip = "127.0.0.1"
+        self.portApp = 8080
+        self.ipApp = "127.0.0.1"
 
 
     def test_app_root(self):
 
         """Test app is running"""
-        request = requests.get(f'http://{self.ip}:{self.port}', timeout=1)
+
+        request = requests.get(f'http://{self.ipApp}:{self.portApp}', timeout=1)
         print ("Request = ", request.text)
         self.assertIn(" Hello. This is BankCheckRunner", request.text)
 
@@ -50,6 +51,7 @@ class TestApp(unittest.TestCase):
 
 
     def test_app_card_unknown_card(self):
+
         '''Test card number, that is not in db'''
 
         cardNumber = "11111111111111111111"
