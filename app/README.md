@@ -1,26 +1,14 @@
 # Hello!
 
 It's a test task for a technical interview from Viktor Bykov.
+
+You are in application directory.
+
 ___
 ## Before install and run:
-```Please check first `docker` and `docker-compose` are installed```
+```Please check first `docker` is installed```
 ___
 ## Install and run:
-
-```
-docker-compose build
-docker-compose up -d app 
-```
-
-### Note: App runs on port 8080 by default. If you want to change it - please edit `docker-compose.yml`
-
-### If you want to run API tests, please use command:
-
-```
-docker-compose up test
-```
-
-## If you want to use only app docker image, please go to 'app' dir and run:
 
 ```
 docker build -t image_name .
