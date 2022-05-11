@@ -4,8 +4,9 @@ import requests
 class TestApp(unittest.TestCase):
     def __init__(self, *args, **kwargs):
         super(TestApp, self).__init__(*args, **kwargs)
-        self.portApp = 8080
-        self.ipApp = "127.0.0.1"
+
+        self.portApp = 8080             #port, where main app is working
+        self.ipApp = "127.0.0.1"        #ip, where main app is working
 
 
     def test_app_root(self):
@@ -22,7 +23,7 @@ class TestApp(unittest.TestCase):
         '''Test response for incorrect card number - length < 16'''
 
         cardNumber = "123456789012345"
-        request = requests.get(f'http://{self.ip}:{self.port}/card/{cardNumber}', timeout=1)
+        request = requests.get(f'http://{self.ipApp}:{self.portApp}/card/{cardNumber}', timeout=1)
         print ("Request = ", request.text)
         self.assertEqual(request.status_code, 500)
         self.assertIn("Card number length is incorrect. Please check", request.text)
@@ -33,7 +34,7 @@ class TestApp(unittest.TestCase):
         '''Test response for incorrect card number - length > 20'''
 
         cardNumber = "123456789012345678901"
-        request = requests.get(f'http://{self.ip}:{self.port}/card/{cardNumber}', timeout = 1 )
+        request = requests.get(f'http://{self.ipApp}:{self.portApp}/card/{cardNumber}', timeout = 1 )
         print ("Request = ", request.text)
         self.assertEqual(request.status_code, 500)
         self.assertIn("Card number length is incorrect. Please check", request.text)
@@ -44,7 +45,7 @@ class TestApp(unittest.TestCase):
         '''Test response for incorrect card number - it consists letters'''
 
         cardNumber = "111a"
-        request = requests.get(f'http://{self.ip}:{self.port}/card/{cardNumber}', timeout = 1)
+        request = requests.get(f'http://{self.ipApp}:{self.portApp}/card/{cardNumber}', timeout = 1)
         print ("Request = ", request.text)
         self.assertEqual(request.status_code, 500)
         self.assertIn("Card number must contain digits only", request.text)
@@ -55,7 +56,7 @@ class TestApp(unittest.TestCase):
         '''Test card number, that is not in db'''
 
         cardNumber = "11111111111111111111"
-        request = requests.get(f'http://{self.ip}:{self.port}/card/{cardNumber}', timeout = 1)
+        request = requests.get(f'http://{self.ipApp}:{self.portApp}/card/{cardNumber}', timeout = 1)
         print("Request = ", request.text)
         self.assertEqual(request.status_code, 500)
         self.assertEqual(request.json().get("card data"), "Unknown card")
@@ -65,7 +66,7 @@ class TestApp(unittest.TestCase):
         '''Test correct response for valid card number'''
 
         cardNumber = "18006878901234567890"
-        request = requests.get(f'http://{self.ip}:{self.port}/card/{cardNumber}', timeout = 1 )
+        request = requests.get(f'http://{self.ipApp}:{self.portApp}/card/{cardNumber}', timeout = 1 )
         print ("Request = ", request.text)
         self.assertEqual(request.status_code, 200)
         self.assertIsNot(request.json().get("card data"), None)
