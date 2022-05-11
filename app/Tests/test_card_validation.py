@@ -6,7 +6,7 @@ from Bank_check.card_validation import Card
 class TestCard(unittest.TestCase):
     def __init__(self, *args, **kwargs):
         super(TestCard, self).__init__(*args, **kwargs)
-        self.card = Card()
+        self.card = Card(path='./Tests/binlist-data.csv')
 
     def test_check_card_data_min_length(self):
 
@@ -46,8 +46,8 @@ class TestCard(unittest.TestCase):
 
         """checking correct request and correct response"""
 
-        print ("start correct check")
-        request = self.card.get_bank_data("18006878901234567890")
+        request = self.card.get_bank_data("42326078901234567890")
+        print (request)
         self.assertEqual(request[1], 200)
         self.assertIsNot(request[0].get('card data'), None)
 

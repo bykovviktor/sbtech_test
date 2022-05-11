@@ -1,1 +1,1 @@
-binlistFile = r'./Data/binlist-data.csv'
+binListFile = r'./Data/binlist-data.csv'

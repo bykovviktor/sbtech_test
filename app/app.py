@@ -1,6 +1,7 @@
 from quart import Quart, jsonify, request
 import time
 
+from  Config.variables import *
 from Bank_check.card_validation import Card
 
 import logging
@@ -13,7 +14,7 @@ class BankCheckRunner:
         self.app = None
         self.port = port
         self.host = host
-        self.card = Card()
+        self.card = Card(path='./Data/binlist-data.csv')
 
         self.init_quart()
 

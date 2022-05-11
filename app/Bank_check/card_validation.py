@@ -1,13 +1,11 @@
 import csv
 
-from  Config.variables import *
-
-
 
 class Card:
-    def __init__(self):
-        self.banksDatabase = list()
-        self.read_csv()
+    def __init__(self, path=None):
+        self.path = path
+        self.banksDatabase = self.read_csv()
+
 
     def check_card_data(self, cardNum):
         """
@@ -16,15 +14,18 @@ class Card:
         card number must contain only digits
         """
 
+        print (cardNum, cardNum.isdigit(), len(cardNum))
+
         cardValidation = True
-        message = ""
+        message = "Validation OK"
         code = 200
+
         if cardNum.isdigit():
-            print (len(cardNum))
-            if len(str(cardNum)) < 16 or len(str(cardNum)) > 20:
+            if not 16<=len(str(cardNum))<=20:
                 cardValidation = False
-                message = f"Card number length is incorrect. Please check"
+                message = f"Card number length is incorrect. Please check it. Card number must be 16-20 digits. Your card number has {len(str(cardNum))} digits"
                 code = 500
+                print (message)
         else:
             cardValidation = False
             message = f"Card number must contain digits only"
@@ -55,7 +56,6 @@ class Card:
                 "message": {"card data": bankData},
                 "code": 200}
         else:
-            #print (f"bin code {binCode} not found in database")
             response = {
                 "message": {"card data": "Unknown card"},
                 "code": 500
@@ -65,14 +65,15 @@ class Card:
 
 
     def read_csv(self):
+        bankDb = list()
+
         try:
-            with open(binlistFile, encoding="utf8") as f:
+            with open(self.path, encoding="utf8") as f:
                 reader = csv.DictReader(f, delimiter=',')
                 for row in reader:
-                    try:
-                        self.banksDatabase.append(row)
-                    except Exception as error:
-                        break
+                    bankDb.append(row)
+
+            return bankDb
 
         except Exception as error:
             print(f"error during load binListFile: {error}")
